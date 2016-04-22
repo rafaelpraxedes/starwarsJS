@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	   <meta charset="UTF-8">
+	   <title> Star Wars episode 1045 - The Javascript Awakens! </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+        <script src="objects.js" defer></script>
+        <script src="resources.js" defer></script>
+        <script src="sprite.js" defer></script>
+        <script src="main.js" defer></script>
+    </head>
+    <body id="htmlBody">
+        
+        <main id="gameArea">
+
+            <div id="canvasObjects">
+                <div id="divCanvas1">
+                    <canvas id="canvasAnimation">
+                    </canvas>
+                </div>
+            </div>
+            
+            <div id="controlPanel">
+                <div id="controlButtons">
+                    <ul>
+                        <li><input id="btnNewGame" type="button" value="New Game" class="buttons"></li>
+                        <li><input id="btnPauseResume" type="button" value="Pause Game" class="buttons"></li>
+                        <li><input id="btnEndGame" type="button" value="End Game" class="buttons"></li>
+                        <li><input id="btnOptions" type="button" value="Options" class="buttons"></li>
+                        <li><input id="btnJournal" type="button" value="Journal" class="buttons"></li>
+                        <li><input id="btnAbout" type="button" value="Help | About" class="buttons"></li>
+                    </ul>
+                </div>
+                <div id="gameInfo" class="gameInfoPanel">
+                    <ul>
+                        <li><input id="outPlayerName" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outGameLevel" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outLifeQty" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outPlayerLife" class="outputInfo" type="text" readonly></li>
+                        <li><progress id="outPlayerLifeBar" value="100" max="100"></progress></li>
+                    </ul>
+                </div>
+                <div id="gameInfo2" class="gameInfoPanel">
+                    <ul>
+                        <li><input id="outGameNumber" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outObjectiveTime" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outObjectiveCaught" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outEnemiesCaught" class="outputInfo" type="text" readonly></li>
+                        <li><input id="outEnemiesCount" class="outputInfo" type="text" readonly></li>
+                    </ul>
+                </div>
+                <div id="gameInfo3" class="gameInfoPanel">
+                    <ul>
+                        <li><textarea rows="6" cols="30" id="outGameInfo" class="outputInfoWhite" value="" readonly></textarea></li>
+                    </ul>
+                </div>
+                <div id="gameInfo4" class="gameInfoPanel">
+                    <ul>
+                        <li><input id="outGameTimer" class="timer" type="text" value="" readonly></li>
+                    </ul>
+                </div>
+                <div id="gameInfo5" class="gameInfoPanelLogo">
+                </div>
+            </div>
+            
+            <!-- NEW GAME "WINDOW" -->
+            <div id="newGamewWindow">
+                <h1> New Game </h1> <hr /> <br/>
+                <div id="newGameOptions">
+                    <table>
+                        <tr>
+                            <td> <label>Player Name: </label>
+                            </td>
+                            <td> <input id="inPlayerName" class="inputInfo" type="text" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Game Level: </label>
+                            </td>
+                            <td>
+                                <select id="inGameLevel">
+                                    <option value="1">Easy - I want to go home!</option>
+                                    <option value="2">Intermediate - Come on! I'm brave...!</option>
+                                    <option value="3">Hard - I hope they make a statue honoring me...</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label>Game Time (1 up to 5 min): </label>
+                            </td>
+                            <td>
+                                <input type="range" id="inGameTime" name="Game Time" min="1" max="5" onchange="document.getElementById('outGameTime').innerHTML=this.value;">
+                                <label id="outGameTime">3</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr />
+                    <h3> Game Objectives </h3> 
+                    <table>
+                        <tr>
+                            <td> <input type="checkbox" id="inObjectiveTime" value="yes" checked> Survive all game time
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" id="inObjectiveCaught" value="yes" checked> Caught at least N enemies
+                            </td>
+                            <td>
+                                <input type="range" id="inObjectiveCaughtQTY" name="Game Time" min="1" max="50" onchange="document.getElementById('outObjectiveCaughtQTY').innerHTML=this.value;">
+                                <label id="outObjectiveCaughtQTY">25</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br/>
+                <div id="newGameButtons">
+                    <input id="btnNewGameOK" type="button" value="Start" class="buttons" onclick="setGameControls('undefined', 'start')">
+                    <input id="btnNewGameCANCEL" type="button" value="Cancel" class="buttons" onclick="setGameControls('undefined', 'init')">
+                </div>
+                <div id="newGameMessage">
+                </div>
+            </div>        
+            <!-- NEW GAME "WINDOW" -->
+
+            <!-- MSG BOX "WINDOW" -->
+            <div id="msgBoxWindow">
+                <h1> End Game? </h1> <hr /> <br/>
+                <div id="msgBoxMessage">
+                    <p> Are you sure you want finish this beautiful game? </p>
+                </div>
+                <br/>
+                <div id="msgBoxButtons">
+                    <input id="btnMsgBoxOK" type="button" value="OK" class="buttons" onclick="setGameControls('undefined', 'endConfirmed')">
+                    <input id="btnMsgBoxCANCEL" type="button" value="Cancel" class="buttons" onclick="setGameControls('undefined', 'endCancelled')">
+                </div>
+            </div>        
+            <!-- MSG BOX "WINDOW" -->
+
+            <!-- OPTIONS "WINDOW" -->
+            <div id="optionsWindow">
+                <h1> Game Options </h1> <hr /> <br/>
+                <table>
+                    <tr> <td><input type="checkbox" id="inOptLoopBackground" value="yes" checked> Loop Background <p class="outputInfoSmall">(if turn off, you can scroll the background by touching left and right edges)</p> </td>
+                    </tr>
+                    <tr> <td><input type="checkbox" id="inOptSounds" value="yes" checked> Sounds</td>
+                    </tr>
+                </table>
+                <br/>
+                <div id="optionsButtons">
+                    <input id="btnOptionsCLOSE" type="button" value="Close" class="buttons" onclick="setGameControls('undefined', 'init')">
+                </div>
+            </div>        
+            <!-- OPTIONS "WINDOW" -->
+                        
+            <!-- GAME JOURNAL "WINDOW" -->
+            <div id="journalWindow">
+                <h1> Game Journal </h1> <hr /> <br/>
+                <div id="outGameJournal"> </div>
+                <br/>
+                <div id="journalButtons">
+                    <input id="btnOptionsCLOSE" type="button" value="Close" class="buttons" onclick="setGameControls('undefined', 'init')">
+                </div>
+            </div>        
+            <!-- GAME JOURNAL "WINDOW" -->
+
+            <!-- HELP | ABOUT "WINDOW" -->
+            <div id="helpAboutWindow">
+                <h1> Help and About </h1> <hr />
+                <ul> 
+                    <li><b>Player Navigation:</b> arrow keys OR [J, K, L, I] keys</li>
+                    <li><b>Player shots:</b> regular = space or "C" | up = "S" | down = "X" </li>
+                    <li><b>Player life:</b> This is "real life" man! Only Once! </li>
+                    <li><b>Player life level:</b> You have 10 life's level. If you were shot: -1 | Collisions: -3 </li>
+                </ul>
+                <ul> 
+                    <li><b>Game Level:</b> related to number of enemies and frequency of their shots.</li>
+                    <li><b>Objectives:</b> If you choose BOTH objectives, you have to wait all game time even though you have achieved your enemies caught.</li>
+                </ul>
+                <hr />
+                <div id="helpAboutWindowImage">
+                    <img src="images/startwarsSplashScreen.jpg" left="50" width="300" height="184">
+                </div>
+                <div id="helpAboutWindowAbout">
+                    <p>Developed by Rafael Praxedes Soares to final project of Langara 1045 Course (Web Programming).</p>
+                    <p>Vancouver, april 2016</p>
+                    <p style="font-size:10px; text-align:right;">Version 2.02</p>
+                </div>
+                <br/>
+                <div id="helpAboutButtons">
+                    <input id="btnOptionsCLOSE" type="button" value="Close" class="buttons" onclick="setGameControls('undefined', 'init')">
+                </div>
+            </div>        
+            <!-- HELP | ABOUT "WINDOW" -->
+            
+        </main>
+    
+    </body>
+</html>

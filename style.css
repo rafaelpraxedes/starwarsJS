@@ -1,0 +1,242 @@
+    html {  width:  100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+    }
+
+    body {  background-color: black;
+            color: gold;
+            font-family: Orbitron; /*Verdana, Arial, sans-serif;*/
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+    }
+
+
+    #gameArea {
+            background-color: black;
+            position: absolute; 
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            margin: 0;
+            padding: 0;
+    }
+
+    h1 { margin-top: 0; }
+    ul { margin-left: -15px }
+    ul li { list-style: none; }
+
+    .outputInfo {   background-color: black;
+                    color: gold;
+                    font-family: Orbitron; /*Verdana, Arial, sans-serif;*/
+                    border: none;
+    }
+
+    .outputInfoWhite {  background-color: black;
+                        color: white;
+                        font-family: Orbitron; /*Verdana, Arial, sans-serif;*/
+                        border: none;
+                        margin-right: 10px;
+    }
+
+    .outputInfoSmall {  background-color: black;
+                        color: gold;
+                        font-family: Orbitron; /*Verdana, Arial, sans-serif;*/
+                        border: none;
+                        font-size: 10px;
+    }
+
+    .timer {    background-color: black;
+                color: gold;
+                font-family: Orbitron;
+                font-size: 18px;
+                border: none;
+    }
+
+    .buttons { width: 110px; }
+
+    #canvasAnimation { display: block; }
+
+/* --------------------------------------------------------- */    
+/*   Elements which depend on Screen / Window Size           */
+/* --------------------------------------------------------- */    
+
+    #canvasObjects { 
+            width: 100%;
+            height: 80%;
+            margin: 0;
+            padding: 0;
+    }
+
+    #divCanvas1 {
+                    position: absolute; 
+                    top: 0; 
+                    left: 0;
+                    height: 80%;
+                    z-index: 1;
+                    margin: 0;
+                    padding: 0;
+    }
+    
+     
+    #controlPanel { position: absolute; 
+                    top: 80%; 
+                    left: 0;
+                    width: 100%;
+                    height: 20%;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 12px;
+                    background-color: dimgray;
+    }
+
+    #controlButtons {   margin-top: 5px;
+                        margin-left: 0px;
+                        font-size: 12px;
+                        float: left;
+                    }
+
+    .gameInfoPanel {    margin-top: 15px;
+                        margin-left: 15px;
+                        font-size: 12px;
+                        float: left;
+                        background-color: black;
+                        border: solid 1px dimgray;
+                        border-radius: 15px;
+    }
+
+    #gameInfo5 {    background: url(images/startwarsGameLogo.png) no-repeat center center; /*fixed;*/
+                    position: relative;
+                    display: table;
+                    float: left;
+                    width: 22%;
+                    height: 50px;
+                    margin-top: 15px;
+                    margin-left: 15px;
+                    background-color: black;
+                    border: solid 1px dimgray;
+                    border-radius: 15px;
+                    -webkit-background-size: auto; !important;
+                    -moz-background-size: auto;    !important;
+                    -o-background-size: auto;      !important;
+                    background-size: auto;         !important;        
+    }
+
+
+/* --------------------------------------------------------- */    
+/*   New Game "Window"                                       */
+/* --------------------------------------------------------- */    
+
+#newGamewWindow {   display: none;
+                    position: fixed;
+                    top: 10px; 
+                    left: 100px;
+                    width: 600px;
+                    height: 400px;
+                    margin: 0;
+                    padding: 20px;
+                    border: solid white;
+}
+
+#newGameMessage {
+    text-align: center;
+    color: red;
+}
+
+progress {  display: none }
+
+
+/* --------------------------------------------------------- */    
+/*   Msg Box "Window"                                        */
+/* --------------------------------------------------------- */    
+
+#msgBoxWindow { display: none;
+                position: fixed;
+                top: 10px; 
+                left: 100px;
+                width: 400px;
+                height: 250px;
+                margin: 0;
+                padding: 20px;
+                border: solid white;
+}
+
+#msgBoxMessage {
+    text-align: center;
+    color: white;
+}
+
+#msgBoxButtons { margin-left: 80px; }
+
+/* --------------------------------------------------------- */    
+/*   Options "Window"                                        */
+/* --------------------------------------------------------- */    
+
+#optionsWindow { display: none;
+                position: fixed;
+                top: 10px; 
+                left: 100px;
+                width: 400px;
+                height: 250px;
+                margin: 0;
+                padding: 20px;
+                border: solid white;
+}
+
+#optionsButtons { margin-left: 150px; }
+
+/* --------------------------------------------------------- */    
+/*   Journal "Window"                                        */
+/* --------------------------------------------------------- */    
+
+#journalWindow {    display: none;
+                    position: fixed;
+                    top: 10px; 
+                    left: 100px;
+                    width: 700px;
+                    height: 400px;
+                    margin: 0;
+                    padding: 20px;
+                    border: solid white;
+                    font-size: 12px;
+}
+
+#outGameJournal {
+                    width: 100%;
+                    height: 250px;
+                    overflow: auto;
+}
+
+#journalButtons { margin-left: 300px; clear: both; }
+
+#resultTable { border: solid 1px white; text-align: center; text-align: center; margin: 0; padding: 0; width: 100%}
+#resultTable td { border: solid 1px white; text-align: center; padding: 5px; }
+#resultTable th { text-align: center; padding: 5px; }
+
+/* --------------------------------------------------------- */    
+/*   Help | About "Window"                                   */
+/* --------------------------------------------------------- */    
+
+#helpAboutWindow {  display: none;
+                    position: fixed;
+                    top: 10px; 
+                    left: 100px;
+                    width: 600px;
+                    height: 400px;
+                    margin: 0;
+                    padding: 20px;
+                    border: solid white;
+                    font-size: 12px;
+}
+
+#helpAboutWindow ul li { list-style: disc; text-align: justify; }
+
+#helpAboutWindowImage { float: left; }
+
+#helpAboutWindowAbout { padding-top: 50px; text-align: justify; }
+
+#helpAboutButtons { margin-left: 250px; clear: both; }
+
